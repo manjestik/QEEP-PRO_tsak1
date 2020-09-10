@@ -62,6 +62,11 @@ class Application
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $key_words = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -171,6 +176,18 @@ class Application
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getKeyWords(): ?array
+    {
+        return $this->key_words;
+    }
+
+    public function setKeyWords(array $key_words): self
+    {
+        $this->key_words = $key_words;
 
         return $this;
     }

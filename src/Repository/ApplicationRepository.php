@@ -21,17 +21,21 @@ class ApplicationRepository extends ServiceEntityRepository
 
     /**
      * @param $date
+     * @param $icon
      * @return Application[]
      */
-    public function findAllGreaterThanDate($date): array{
+    public function findAllGreaterThanDate($date, $icon): array{
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
             'SELECT d
             FROM App\Entity\Application d
             WHERE d.date > :date
+            AND d.icon = :icon
             ORDER BY d.date ASC'
-        )->setParameter('date', $date);
+        )
+            ->setParameter('date', $date)
+            ->setParameter('icon', $icon);
 
         // returns an array of Product objects
         return $query->getResult();
@@ -50,6 +54,27 @@ class ApplicationRepository extends ServiceEntityRepository
             WHERE i.icon = :icon
             ORDER BY i.icon ASC'
         )->setParameter('icon', $icon);
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
+
+    /**
+     * @param $date
+     * @param $key
+     * @return array
+     */
+    public function getAllInfoForThisDay($date, $key): array{
+        $entityManager = $this->getEntityManager();
+        /*WHERE (i.title LIKE :key OR i.description LIKE :key OR i.key_words LIKE :key)*/
+        $query = $entityManager->createQuery(
+            'SELECT i
+            FROM App\Entity\Application i
+            WHERE i.key_words LIKE :key
+            AND i.date > :date'
+        )
+            ->setParameter('key', '%'.$key.'%')
+            ->setParameter('date', $date);
 
         // returns an array of Product objects
         return $query->getResult();

@@ -19,60 +19,100 @@ class ApplicationController extends BaseController {
      */
     public function index(Request $request){
         $key = $request->query->get('key');
-        //$applicationSearch = $this->getDoctrine()->getRepository(Application::class)->findAllGreaterThanPrice(time() - 86400);
-        $applicationSearch = $this->getDoctrine()->getRepository(Application::class)->findAllGreaterThanDate(time());
 
-        if ($applicationSearch){
-            //нашел за сегодня
-            //var_dump($applicationSearch);
-        }
-        else{
-            $result = $this->scrapApplication($key);
-            foreach ($result as $item){
-                $entityManager = $this->getDoctrine()->getManager();
-                $applicationSearch = $entityManager->getRepository(Application::class)->findDuplicate($item['icon']);
-                // занесение в бд если не существует
-                if (empty($applicationSearch[0])){
-                    $application = new Application();
+        $entityManager = $this->getDoctrine()->getManager();
 
-                    $application->setStore($item['store']);
-                    $application->setTitle($item['title']);
-                    $application->setDescription($item['description']);
-                    $application->setIcon($item['icon']);
-                    $application->setScoreText($item['score']);
-                    $application->setRatings($item['ratings']);
-                    $application->setReviews($item['reviews']);
-                    $application->setTop($item['top']);
-                    $application->setDate(time());
+        // проверка в бд добавление/обновление
+        $result = $this->scrapApplication($key);
+        for ($keyResult = 1; $keyResult <= count($result); $keyResult++){
+            $checkDuplicate = $entityManager->getRepository(Application::class)->findDuplicate($result[$keyResult]['icon']);
+            $checkTimeUpdate = $entityManager->getRepository(Application::class)->findAllGreaterThanDate(time() - 86400, $result[$keyResult]['icon']);
 
-                    $entityManager->persist($application);
-                    $entityManager->flush();
+            if (empty($checkTimeUpdate)){
+                //var_dump('если за сутки НЕ было обновления');
+                if (empty($checkDuplicate[0])){
+                    //var_dump('добавляем в бд');
+                    $this->insertDateDB($result[$keyResult], $key);
                 }
-                // обновление
                 else{
-                    $application = $applicationSearch[0];
-                    //текущий рейтинг
-                    $application->setScoreText($item['score']);
-                    //количество оценок
-                    $application->setRatings($item['ratings']);
-                    //количество отзывов
-                    $application->setReviews($item['reviews']);
-                    //текущая дата
-                    $application->setDate(time());
-                    //описание
-                    $application->setDescription($application->getDescription());
-                    //текущий рейтинг
-                    $application->setTop($item['top']);
-
-                    $entityManager->flush();
+                    //var_dump('обновляем в бд');
+                    $this->updateDateDB($checkDuplicate[0], $result[$keyResult], $key);
                 }
             }
         }
 
-        $forRender = parent::defaultRender();
-        $forRender['application'] = $application;
+        //$data = parent::defaultRender();
+        $data = $entityManager->getRepository(Application::class)->getAllInfoForThisDay(time() - 86400, $key);
 
-        return $this->render('main/index.html.twig', $forRender);
+        return $this->render('main/index.html.twig', ['application' => $data, 'title' => 'Список приложений', 'main_title' => 'Список всех найденых приложений']);
+    }
+
+    /**
+     * @param $keysSearch
+     * @param $key
+     * @return array
+     */
+    public function addKey(array $keysSearch, $key){
+        $checkKey = false;
+        foreach ($keysSearch as $keySearch){
+            if ($key == $keySearch){
+                $checkKey = true;
+                break;
+            }
+        }
+        if (!$checkKey){
+            $keysSearch = array_push($keysSearch, $key);
+        }
+        return $keysSearch;
+    }
+
+    /**
+     * @param $application
+     * @param $item
+     * @param $key
+     */
+    public function updateDateDB($application, $item, $key){
+        //текущий рейтинг
+        $application->setScoreText($item['score']);
+        //количество оценок
+        $application->setRatings($item['ratings']);
+        //количество отзывов
+        $application->setReviews($item['reviews']);
+        //текущая дата
+        $application->setDate(time());
+        //описание
+        $application->setDescription($application->getDescription());
+        //текущий рейтинг
+        $application->setTop($item['top']);
+
+        //добавление ключа поиска
+        $keysSearch = $this->addKey($application->getKeyWords(), $key);
+        $application->setKeyWords($keysSearch);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+    }
+
+    /**
+     * @param $item
+     * @param $keySearch
+     */
+    public function insertDateDB($item, $keySearch){
+        $application = new Application();
+        $application->setStore($item['store']);
+        $application->setTitle($item['title']);
+        $application->setDescription($item['description']);
+        $application->setIcon($item['icon']);
+        $application->setScoreText($item['score']);
+        $application->setRatings($item['ratings']);
+        $application->setReviews($item['reviews']);
+        $application->setTop($item['top']);
+        $application->setDate(time());
+        $application->setKeyWords([$keySearch]);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($application);
+        $entityManager->flush();
     }
 
     /**
@@ -152,6 +192,10 @@ class ApplicationController extends BaseController {
                     $trimmed[1] = str_replace(['\r', '\n', "'", '+', '"'],'',$trimmed[1]);
                     $trimmed[1] = rtrim($trimmed[1], ',');
                     $trimmed[1] = trim($trimmed[1]);
+
+                    if ($trimmed[1] == 'undefined'){
+                        $trimmed[1] = 0;
+                    }
 
                     $arrayApplication[$arrayKey][$trimmed[0]] = $trimmed[1];
                     unset($scrap[$keyScrap]);

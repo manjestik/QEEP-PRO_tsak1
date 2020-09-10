@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7d2b98c-33da-42ba-a640-3724c9c8fcd0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20200910205324.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Application/ApplicationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Application/ApplicationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ApplicationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ApplicationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +171,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1599659444280</updated>
-      <workItem from="1599659445376" duration="53051000" />
+      <workItem from="1599659445376" duration="63569000" />
     </task>
     <task id="LOCAL-00001" summary="add in repository">
       <created>1599738091228</created>
@@ -183,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599758146802</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix in column &quot;ratings&quot;, table &quot;application&quot;, removed from the end &quot;,&quot;">
+      <created>1599761622212</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1599761622212</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,17 +204,18 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="add in repository" />
     <MESSAGE value="fix and create/update date in db&#10;add top on data scrap" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix and create/update date in db&#10;add top on data scrap" />
+    <MESSAGE value="fix in column &quot;ratings&quot;, table &quot;application&quot;, removed from the end &quot;,&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix in column &quot;ratings&quot;, table &quot;application&quot;, removed from the end &quot;,&quot;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="254" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599738180560">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="254" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870@0.0.1600.870" timestamp="1599738180560" />
-    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1599758145385">
+    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1599761620879">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1599758145385" />
+    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1599761620879" />
     <state x="580" y="189" key="FileChooserDialogImpl" timestamp="1599747871628">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
@@ -224,10 +236,10 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="301" y="79" key="SettingsEditor/0.0.1600.870@0.0.1600.870" timestamp="1599738080812" />
-    <state x="551" y="148" key="Vcs.Push.Dialog.v2" timestamp="1599758151283">
+    <state x="551" y="148" key="Vcs.Push.Dialog.v2" timestamp="1599761626727">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="551" y="148" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1599758151283" />
+    <state x="551" y="148" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1599761626727" />
     <state x="517" y="206" key="refactoring.ChangeSignatureDialog" timestamp="1599743941495">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
