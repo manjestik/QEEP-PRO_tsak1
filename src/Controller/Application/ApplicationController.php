@@ -144,7 +144,7 @@ class ApplicationController extends BaseController {
                     // Add ratings in AppStore
                     if ($store == 'AppStore'){
                         if ($trimmed[0] == 'reviews'){
-                            $arrayApplication[$arrayKey]['ratings'] = $trimmed[1];
+                            $arrayApplication[$arrayKey]['ratings'] = str_replace(',','',$trimmed[1]);
                         }
                     }
 
@@ -152,10 +152,6 @@ class ApplicationController extends BaseController {
                     $trimmed[1] = str_replace(['\r', '\n', "'", '+', '"'],'',$trimmed[1]);
                     $trimmed[1] = rtrim($trimmed[1], ',');
                     $trimmed[1] = trim($trimmed[1]);
-
-                    if ($trimmed[0] == 'ratings'){
-                        $trimmed[1] = str_replace(',','',$trimmed[1]);
-                    }
 
                     $arrayApplication[$arrayKey][$trimmed[0]] = $trimmed[1];
                     unset($scrap[$keyScrap]);
