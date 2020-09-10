@@ -6,5 +6,5 @@ gplay.search({
     term: name,
 	fullDetail: true,
     lang: 'ru',
-    num: 50
+    num: 10,
 }).then(console.log, console.log);

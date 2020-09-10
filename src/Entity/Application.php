@@ -20,11 +20,6 @@ class Application
     /**
      * @ORM\Column(type="integer")
      */
-    private $ratings;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $reviews;
 
     /**
@@ -40,33 +35,36 @@ class Application
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $summary;
+    private $icon;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $date;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $icon;
+    private $store;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=255)
      */
-    private $date;
+    private $ratings;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $top;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getRatings(): ?int
-    {
-        return $this->ratings;
-    }
-
-    public function setRatings(int $ratings): self
-    {
-        $this->ratings = $ratings;
-
-        return $this;
     }
 
     public function getReviews(): ?int
@@ -105,18 +103,6 @@ class Application
         return $this;
     }
 
-    public function getSummary(): ?string
-    {
-        return $this->summary;
-    }
-
-    public function setSummary(string $summary): self
-    {
-        $this->summary = $summary;
-
-        return $this;
-    }
-
     public function getIcon(): ?string
     {
         return $this->icon;
@@ -129,14 +115,62 @@ class Application
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?int
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(int $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getStore(): ?string
+    {
+        return $this->store;
+    }
+
+    public function setStore(string $store): self
+    {
+        $this->store = $store;
+
+        return $this;
+    }
+
+    public function getRatings(): ?string
+    {
+        return $this->ratings;
+    }
+
+    public function setRatings(string $ratings): self
+    {
+        $this->ratings = $ratings;
+
+        return $this;
+    }
+
+    public function getTop(): ?int
+    {
+        return $this->top;
+    }
+
+    public function setTop(int $top): self
+    {
+        $this->top = $top;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

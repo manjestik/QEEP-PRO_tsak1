@@ -18,25 +18,56 @@ class ApplicationController extends BaseController {
      * @return Response
      */
     public function index(Request $request){
-
         $key = $request->query->get('key');
-        $application = $this->getDoctrine()->getRepository(Application::class)->findAllGreaterThanPrice(date('d.m.Y H:i:s', time()));
+        //$applicationSearch = $this->getDoctrine()->getRepository(Application::class)->findAllGreaterThanPrice(time() - 86400);
+        $applicationSearch = $this->getDoctrine()->getRepository(Application::class)->findAllGreaterThanDate(time());
 
-        if ($application){
+        if ($applicationSearch){
             //нашел за сегодня
-            var_dump($application);
+            //var_dump($applicationSearch);
         }
         else{
             $result = $this->scrapApplication($key);
-            var_dump($result);
+            foreach ($result as $item){
+                $entityManager = $this->getDoctrine()->getManager();
+                $applicationSearch = $entityManager->getRepository(Application::class)->findDuplicate($item['icon']);
+                // занесение в бд если не существует
+                if (empty($applicationSearch[0])){
+                    $application = new Application();
+
+                    $application->setStore($item['store']);
+                    $application->setTitle($item['title']);
+                    $application->setDescription($item['description']);
+                    $application->setIcon($item['icon']);
+                    $application->setScoreText($item['score']);
+                    $application->setRatings($item['ratings']);
+                    $application->setReviews($item['reviews']);
+                    $application->setTop($item['top']);
+                    $application->setDate(time());
+
+                    $entityManager->persist($application);
+                    $entityManager->flush();
+                }
+                // обновление
+                else{
+                    $application = $applicationSearch[0];
+                    //текущий рейтинг
+                    $application->setScoreText($item['score']);
+                    //количество оценок
+                    $application->setRatings($item['ratings']);
+                    //количество отзывов
+                    $application->setReviews($item['reviews']);
+                    //текущая дата
+                    $application->setDate(time());
+                    //описание
+                    $application->setDescription($application->getDescription());
+                    //текущий рейтинг
+                    $application->setTop($item['top']);
+
+                    $entityManager->flush();
+                }
+            }
         }
-
-        /*$em->persist($application);
-        $em = $this->getDoctrine()->getManager();
-        $em->flush();*/
-
-
-
 
         $forRender = parent::defaultRender();
         $forRender['application'] = $application;
@@ -51,7 +82,7 @@ class ApplicationController extends BaseController {
     public function scrapApplication($key){
         $patchStore = ['AppStore', 'GooglePlay'];
         $arrayApplication = [];
-        $arrayKey = 0;
+        $arrayKey = $topKey = 0;
         foreach ($patchStore as $store){
             $storeSrc = 'assets/main/js/'.$store.'/index.js';
             if (!file_exists($storeSrc))
@@ -77,9 +108,28 @@ class ApplicationController extends BaseController {
                     continue;
                 }
                 else{
-                    if ($checkTitle = strpos($trimmed, 'title') === 0){
-                        $arrayKey  = $arrayKey + 1;
+                    // Add store and top
+                    if (strpos($trimmed, 'title') === 0){
+                        $arrayKey++;
+                        $topKey++;
+                        // Add store
+                        $arrayApplication[$arrayKey]['store'] = $store;
+
+                        // Add Top
+                        //$arrayApplication[$arrayKey]['top'] = $arrayKey;
+                        if ($arrayKey > 1){
+                            $firstStore = $arrayApplication[$arrayKey - 1]['store'];
+                            $secondStore = $arrayApplication[$arrayKey]['store'];
+                            if($firstStore != $secondStore){
+                                $topKey = 1;
+                            }
+                            $arrayApplication[$arrayKey]['top'] = $topKey;
+                        }
+                        else{
+                            $arrayApplication[1]['top'] = $topKey;
+                        }
                     }
+
                     // Add delimiter
                     if (strpos($trimmed, ": '") === false){
                         $trimmed = $this->replaceJSWord(': ', '/explode/', $trimmed,'1');
@@ -87,23 +137,27 @@ class ApplicationController extends BaseController {
                     else{
                         $trimmed = $this->replaceJSWord(": '", '/explode/', $trimmed,'1');
                     }
+
                     // Explode
                     $trimmed = explode('/explode/', $trimmed);
 
                     // Add ratings in AppStore
                     if ($store == 'AppStore'){
                         if ($trimmed[0] == 'reviews'){
-                            $arrayApplication[$store][$arrayKey]['ratings'] = $trimmed[1];
+                            $arrayApplication[$arrayKey]['ratings'] = $trimmed[1];
                         }
                     }
 
                     // Dell bad word
-                    $trimmed[1] = str_replace(['\r', '\n', "'", '+', '"'],'',$trimmed[1]);;
+                    $trimmed[1] = str_replace(['\r', '\n', "'", '+', '"'],'',$trimmed[1]);
                     $trimmed[1] = rtrim($trimmed[1], ',');
                     $trimmed[1] = trim($trimmed[1]);
 
-                    // Create new array and unset scrap arr
-                    $arrayApplication[$store][$arrayKey][$trimmed[0]] = $trimmed[1];
+                    if ($trimmed[0] == 'ratings'){
+                        $trimmed[1] = str_replace(',','',$trimmed[1]);
+                    }
+
+                    $arrayApplication[$arrayKey][$trimmed[0]] = $trimmed[1];
                     unset($scrap[$keyScrap]);
                 }
             }

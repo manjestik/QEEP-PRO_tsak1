@@ -23,7 +23,7 @@ class ApplicationRepository extends ServiceEntityRepository
      * @param $date
      * @return Application[]
      */
-    public function findAllGreaterThanPrice($date): array{
+    public function findAllGreaterThanDate($date): array{
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
@@ -32,6 +32,24 @@ class ApplicationRepository extends ServiceEntityRepository
             WHERE d.date > :date
             ORDER BY d.date ASC'
         )->setParameter('date', $date);
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
+
+    /**
+     * @param $icon
+     * @return Application[]
+     */
+    public function findDuplicate($icon): array{
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT i
+            FROM App\Entity\Application i
+            WHERE i.icon = :icon
+            ORDER BY i.icon ASC'
+        )->setParameter('icon', $icon);
 
         // returns an array of Product objects
         return $query->getResult();
