@@ -51,20 +51,20 @@ class ApplicationController extends BaseController {
 
         $entityManager = $this->getDoctrine()->getManager();
 
-        // проверка в бд добавление/обновление
+        // получаем данные
         $result = $this->scrapApplication($key);
-        for ($keyResult = 1; $keyResult <= count($result); $keyResult++){
-            $checkDuplicate = $entityManager->getRepository(Application::class)->findDuplicate($result[$keyResult]['icon'], $result[$keyResult]['store'], $result[$keyResult]['top']);
-            $checkTimeUpdate = $entityManager->getRepository(Application::class)->findAllGreaterThanDate(time() - 86400, $result[$keyResult]['icon']);
 
-            if (empty($checkTimeUpdate)){
-                var_dump('если за сутки НЕ было обновления');
+        $dateDB = $entityManager->getRepository(Application::class)->findBy(['key_words' => $key],['date' => 'ASC'],1)[0];
+        $dateDB = $dateDB->getDate();
+
+        // если время обновления в бд было сутоки назад
+        if ($dateDB < time() - 86400){
+            for ($keyResult = 1; $keyResult <= count($result); $keyResult++){
+                $checkDuplicate = $entityManager->getRepository(Application::class)->findDuplicate($result[$keyResult]['icon'], $result[$keyResult]['store'], $result[$keyResult]['top']);
                 if (empty($checkDuplicate[0])){
-                    var_dump('добавляем в бд');
                     $this->insertDateDB($result[$keyResult], $key);
                 }
                 else{
-                    var_dump('обновляем в бд');
                     $this->updateDateDB($checkDuplicate[0], $result[$keyResult], $key);
                 }
             }
@@ -76,7 +76,7 @@ class ApplicationController extends BaseController {
         $forRender['application'] = $data;
         $forRender['title'] = 'Список приложений';
         $forRender['main_title'] = 'Список всех найденых приложений';
-        //return $this->render('main/index.html.twig', $forRender);
+
         return $forRender;
     }
 
@@ -119,8 +119,7 @@ class ApplicationController extends BaseController {
         $application->setTop($item['top']);
 
         //добавление ключа поиска
-        $keysSearch = $this->addKey($application->getKeyWords(), $key);
-        $application->setKeyWords($keysSearch);
+        $application->setKeyWords($key);
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->flush();
@@ -141,7 +140,7 @@ class ApplicationController extends BaseController {
         $application->setReviews($item['reviews']);
         $application->setTop($item['top']);
         $application->setDate(time());
-        $application->setKeyWords([$keySearch]);
+        $application->setKeyWords($keySearch);
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($application);

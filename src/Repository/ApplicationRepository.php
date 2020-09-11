@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Application;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository as ServiceEntityRepositoryAlias;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -12,7 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Application[]    findAll()
  * @method Application[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ApplicationRepository extends ServiceEntityRepository
+class ApplicationRepository extends ServiceEntityRepositoryAlias
 {
     public function __construct(ManagerRegistry $registry)
     {
