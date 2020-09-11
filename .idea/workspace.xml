@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7d2b98c-33da-42ba-a640-3724c9c8fcd0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20200910205324.php" afterDir="false" />
+    <list default="true" id="a9623682-fd81-4fd1-a373-a98f7704d5e3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/extends/menu.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/main/js/AppStore/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/main/js/AppStore/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/main/js/GooglePlay/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/main/js/GooglePlay/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Application/ApplicationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Application/ApplicationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ApplicationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ApplicationType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/ApplicationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ApplicationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,48 +31,21 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
-      <path value="$PROJECT_DIR$/vendor/symfony/dotenv" />
-      <path value="$PROJECT_DIR$/vendor/psr/cache" />
-      <path value="$PROJECT_DIR$/vendor/symfony/framework-bundle" />
-      <path value="$PROJECT_DIR$/vendor/psr/log" />
-      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
-      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
-      <path value="$PROJECT_DIR$/vendor/symfony/string" />
-      <path value="$PROJECT_DIR$/vendor/psr/container" />
-      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
-      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
-      <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
-      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
-      <path value="$PROJECT_DIR$/vendor/symfony/flex" />
-      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
-      <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/symfony/cache" />
-      <path value="$PROJECT_DIR$/vendor/symfony/cache-contracts" />
-      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
-      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
-      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
-      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
-      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
-      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
-      <path value="$PROJECT_DIR$/vendor/symfony/console" />
-      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
-      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
-      <path value="$PROJECT_DIR$/vendor/symfony/config" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-link" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/symfony/asset" />
       <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
@@ -97,12 +78,39 @@
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/psr/link" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/framework-bundle" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-eventmanager" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
       <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
@@ -126,19 +134,16 @@
       <path value="$PROJECT_DIR$/vendor/symfony/notifier" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1hHE6kIGFpe5EiIR2QPFBeM5kAv" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1hLztQtQAAcUJvWpgDQtxK5YEE2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Controller/Application" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -146,115 +151,32 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
     <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="W:\domains\task\templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="W:\domains\task\src\Controller\Application" />
-      <recent name="W:\domains\task\public\assets\main" />
-    </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="git config --global user.email &quot;manjestik1@gmail.com&quot;" />
-    </option>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f7d2b98c-33da-42ba-a640-3724c9c8fcd0" name="Default Changelist" comment="" />
-      <created>1599659444280</created>
+      <changelist id="a9623682-fd81-4fd1-a373-a98f7704d5e3" name="Default Changelist" comment="" />
+      <created>1599805374632</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1599659444280</updated>
-      <workItem from="1599659445376" duration="63569000" />
+      <updated>1599805374632</updated>
+      <workItem from="1599805375730" duration="13617000" />
     </task>
-    <task id="LOCAL-00001" summary="add in repository">
-      <created>1599738091228</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1599738091229</updated>
-    </task>
-    <task id="LOCAL-00002" summary="fix and create/update date in db&#10;add top on data scrap">
-      <created>1599758146802</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1599758146802</updated>
-    </task>
-    <task id="LOCAL-00003" summary="fix in column &quot;ratings&quot;, table &quot;application&quot;, removed from the end &quot;,&quot;">
-      <created>1599761622212</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1599761622212</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add in repository" />
-    <MESSAGE value="fix and create/update date in db&#10;add top on data scrap" />
-    <MESSAGE value="fix in column &quot;ratings&quot;, table &quot;application&quot;, removed from the end &quot;,&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix in column &quot;ratings&quot;, table &quot;application&quot;, removed from the end &quot;,&quot;" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="254" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599738180560">
+    <state x="92" y="92" width="1416" height="686" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599814179757">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="254" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870@0.0.1600.870" timestamp="1599738180560" />
-    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1599761620879">
+    <state x="92" y="92" width="1416" height="686" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1600.870@0.0.1600.870" timestamp="1599814179757" />
+    <state x="456" y="198" key="run.anything.popup" timestamp="1599805669882">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1599761620879" />
-    <state x="580" y="189" key="FileChooserDialogImpl" timestamp="1599747871628">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="580" y="189" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1599747871628" />
-    <state x="678" y="332" key="Github.ShareDialog" timestamp="1599758080464">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="678" y="332" key="Github.ShareDialog/0.0.1600.870@0.0.1600.870" timestamp="1599758080464" />
-    <state x="540" y="132" key="Github.UntrackedFilesDialog" timestamp="1599737609291">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="540" y="132" key="Github.UntrackedFilesDialog/0.0.1600.870@0.0.1600.870" timestamp="1599737609291" />
-    <state x="816" y="217" key="NewPhpClassDialog" timestamp="1599662482972">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="816" y="217" key="NewPhpClassDialog/0.0.1600.870@0.0.1600.870" timestamp="1599662482972" />
-    <state x="301" y="79" key="SettingsEditor" timestamp="1599738080812">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="301" y="79" key="SettingsEditor/0.0.1600.870@0.0.1600.870" timestamp="1599738080812" />
-    <state x="551" y="148" key="Vcs.Push.Dialog.v2" timestamp="1599761626727">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="551" y="148" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1599761626727" />
-    <state x="517" y="206" key="refactoring.ChangeSignatureDialog" timestamp="1599743941495">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="517" y="206" key="refactoring.ChangeSignatureDialog/0.0.1600.870@0.0.1600.870" timestamp="1599743941495" />
-    <state x="456" y="198" width="672" height="677" key="run.anything.popup" timestamp="1599737728600">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="456" y="198" width="672" height="677" key="run.anything.popup/0.0.1600.870@0.0.1600.870" timestamp="1599737728600" />
-    <state x="758" y="191" width="672" height="678" key="search.everywhere.popup" timestamp="1599662644237">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="758" y="191" width="672" height="678" key="search.everywhere.popup/0.0.1600.870@0.0.1600.870" timestamp="1599662644237" />
-    <state x="522" y="346" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599732027651">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="522" y="346" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1600.870@0.0.1600.870" timestamp="1599732027651" />
+    <state x="456" y="198" key="run.anything.popup/0.0.1600.870@0.0.1600.870" timestamp="1599805669882" />
   </component>
 </project>

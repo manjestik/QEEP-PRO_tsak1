@@ -3,16 +3,45 @@
     {{ title }}
 {% endblock %}
 {% block body %}
-<h1>{{ main_title }}</h1>
-    {% for app in application %}
-        ------------------------------------------------------------------------------------<br>
-        | Название: {{ app.title }}<br>
-        | Описание: {{ app.description }}<br>
-        | Магазин: {{ app.store }}<br>
-        | Рейтинг: {{ app.scoreText }} (проголосовали: {{ app.ratings }})<br>
-        | Отзывов: {{ app.reviews }}<br>
-        | Топ в магазине: {{ app.top }}<br>
-        ------------------------------------------------------------------------------------<br>
-        <br>
-    {% endfor %}
+    {% if application %}
+        {% for app in application.application %}
+            <div class="card mb-3 shadow-lg rounded">
+                <div class="row no-gutters">
+                    <div class="col-3 rounded-left" style="height: auto; background-image: url('{{ app.icon }}'); background-size: cover;">
+                        &nbsp;
+                    </div>
+                    <div class="col">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title">{{ app.title }}</h5>
+                                </div>
+                                <div class="col-md-auto text-right text-muted">
+                                    <h5>{{ app.top }} в {{ app.store }}</h5>
+                                </div>
+                            </div>
+                            <p class="card-text">{{ app.description }}</p>
+                            <p class="card-text">Рейтинг {{ app.scoreText }}/5 <span class="text-muted">(проголосовали: {{ app.ratings }})</span></p>
+                            <p class="card-text vertical-align: middle"><small class="text-muted">всего отзывов {{ app.reviews }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {#------------------------------------------------------------------------------------<br>
+            | Название: {{ app.title }}<br>
+            | Описание: {{ app.description }}<br>
+            | Магазин: {{ app.store }}<br>
+            | Рейтинг: {{ app.scoreText }} (проголосовали: {{ app.ratings }})<br>
+            | Отзывов: {{ app.reviews }}<br>
+            | Топ в магазине: {{ app.top }}<br>
+            ------------------------------------------------------------------------------------<br>#}
+            <br>
+        {% endfor %}
+    {% else %}
+        <h1 class="text-center lead">
+            Введи название приложения в поиске и мы отобразим все топовые варианты из AppStore и GooglePlay
+        </h1>
+    {% endif %}
 {% endblock %}

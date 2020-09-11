@@ -6,5 +6,5 @@ store.search({
     term: name,
     lang: 'ru',
     country: 'ru',
-    num: 10,
+    num: 15,
 }).then(console.log, console.log);

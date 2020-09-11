@@ -1,0 +1,13 @@
+<nav class="navbar navbar-dark  bg-dark ">
+    <a class="navbar-brand">MEGAпоисковик приложений</a>
+    <div class="form-inline">
+        {{ form_start(form) }}
+        {{ form_widget(form.title,  {
+            'attr': {'class': 'form-control mr-sm-2', 'placeholder': 'Название...'}
+        })}}
+        {{ form_widget(form.submit, {
+            'attr': {'class': 'btn btn-outline-light my-2 my-sm-0'}
+        })}}
+        {{ form_end(form) }}
+    </div>
+</nav>

@@ -21,7 +21,7 @@ class ApplicationType extends AbstractType
                     'maxlength' => 15,
                 ],
             ])
-            ->add('subbmite', SubmitType::class, [
+            ->add('submit', SubmitType::class, [
                 'label' => 'Поиск',
             ])
         ;

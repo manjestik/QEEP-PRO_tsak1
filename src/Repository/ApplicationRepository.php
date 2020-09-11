@@ -43,17 +43,22 @@ class ApplicationRepository extends ServiceEntityRepository
 
     /**
      * @param $icon
+     * @param $store
+     * @param $top
      * @return Application[]
      */
-    public function findDuplicate($icon): array{
+    public function findDuplicate($icon, $store, $top): array{
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
             'SELECT i
             FROM App\Entity\Application i
-            WHERE i.icon = :icon
-            ORDER BY i.icon ASC'
-        )->setParameter('icon', $icon);
+            WHERE i.store = :store AND i.top = :top AND i.icon = :icon
+            ORDER BY i.date DESC'
+        )
+            ->setParameter('icon', $icon)
+            ->setParameter('store', $store)
+            ->setParameter('top', $top);
 
         // returns an array of Product objects
         return $query->getResult();
@@ -71,7 +76,8 @@ class ApplicationRepository extends ServiceEntityRepository
             'SELECT i
             FROM App\Entity\Application i
             WHERE i.key_words LIKE :key
-            AND i.date > :date'
+            AND i.date > :date
+            ORDER BY i.top ASC'
         )
             ->setParameter('key', '%'.$key.'%')
             ->setParameter('date', $date);

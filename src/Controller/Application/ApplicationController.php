@@ -13,9 +13,38 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ApplicationController extends BaseController {
     /**
-     * @Route("/application", name="application")
+     * @Route("/", name="application")
      * @param Request $request
-     * @return Response
+     * @return RedirectResponse|Response
+     */
+    public function createFormApplication(Request $request){
+        $application = new Application();
+        $form = $this->createForm(ApplicationType::class, $application);
+        $form->handleRequest($request);
+
+        $forRender = parent::defaultRender();
+        $forRender['application'] = null;
+        $forRender['main_title'] = $forRender['title'] = 'Поиск приложений';
+        $forRender['form'] = $form->createView();
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $key = $application->getTitle();
+            return $this->redirectToRoute('application', ['key' => $key]);
+        }
+        else{
+            if ($key = $request->query->get('key')){
+                $data = $this->index($request);
+                $forRender['application'] = $data;
+                $forRender['title'] = 'Список приложений';
+                $forRender['main_title'] = 'Список всех найденых приложений';
+            }
+            return $this->render('main/index.html.twig', $forRender);
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return array
      */
     public function index(Request $request){
         $key = $request->query->get('key');
@@ -25,26 +54,30 @@ class ApplicationController extends BaseController {
         // проверка в бд добавление/обновление
         $result = $this->scrapApplication($key);
         for ($keyResult = 1; $keyResult <= count($result); $keyResult++){
-            $checkDuplicate = $entityManager->getRepository(Application::class)->findDuplicate($result[$keyResult]['icon']);
+            $checkDuplicate = $entityManager->getRepository(Application::class)->findDuplicate($result[$keyResult]['icon'], $result[$keyResult]['store'], $result[$keyResult]['top']);
             $checkTimeUpdate = $entityManager->getRepository(Application::class)->findAllGreaterThanDate(time() - 86400, $result[$keyResult]['icon']);
 
             if (empty($checkTimeUpdate)){
-                //var_dump('если за сутки НЕ было обновления');
+                var_dump('если за сутки НЕ было обновления');
                 if (empty($checkDuplicate[0])){
-                    //var_dump('добавляем в бд');
+                    var_dump('добавляем в бд');
                     $this->insertDateDB($result[$keyResult], $key);
                 }
                 else{
-                    //var_dump('обновляем в бд');
+                    var_dump('обновляем в бд');
                     $this->updateDateDB($checkDuplicate[0], $result[$keyResult], $key);
                 }
             }
         }
 
-        //$data = parent::defaultRender();
         $data = $entityManager->getRepository(Application::class)->getAllInfoForThisDay(time() - 86400, $key);
 
-        return $this->render('main/index.html.twig', ['application' => $data, 'title' => 'Список приложений', 'main_title' => 'Список всех найденых приложений']);
+        $forRender = parent::defaultRender();
+        $forRender['application'] = $data;
+        $forRender['title'] = 'Список приложений';
+        $forRender['main_title'] = 'Список всех найденых приложений';
+        //return $this->render('main/index.html.twig', $forRender);
+        return $forRender;
     }
 
     /**
@@ -193,6 +226,11 @@ class ApplicationController extends BaseController {
                     $trimmed[1] = rtrim($trimmed[1], ',');
                     $trimmed[1] = trim($trimmed[1]);
 
+                    if (strlen($trimmed[1]) > 200){
+                        $trimmed[1] = substr($trimmed[1], 0, strpos($trimmed[1], ' ', '180'));
+                        $trimmed[1] .= '...';
+                    }
+
                     if ($trimmed[1] == 'undefined'){
                         $trimmed[1] = 0;
                     }
@@ -238,27 +276,5 @@ class ApplicationController extends BaseController {
     public function getScrapInStore($patch, $key){
         exec("node ".$patch." ".$key." 2>&1", $out);
         return $out;
-    }
-
-    /**
-     * @Route("/", name="application_search")
-     * @param Request $request
-     * @return RedirectResponse|Response
-     */
-    public function createFormApplication(Request $request){
-        $application = new Application();
-        $form = $this->createForm(ApplicationType::class, $application);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()){
-            $key = $application->getTitle();
-            return $this->redirectToRoute('application', ['key' => $key]);
-        }
-
-        $forRender = parent::defaultRender();
-        $forRender['main_title'] = $forRender['title'] = 'Поиск приложений';
-        $forRender['form'] = $form->createView();
-
-        return $this->render('main/search.html.twig', $forRender);
     }
 }
