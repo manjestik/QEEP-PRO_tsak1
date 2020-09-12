@@ -81,25 +81,6 @@ class ApplicationController extends BaseController {
     }
 
     /**
-     * @param $keysSearch
-     * @param $key
-     * @return array
-     */
-    public function addKey(array $keysSearch, $key){
-        $checkKey = false;
-        foreach ($keysSearch as $keySearch){
-            if ($key == $keySearch){
-                $checkKey = true;
-                break;
-            }
-        }
-        if (!$checkKey){
-            $keysSearch = array_push($keysSearch, $key);
-        }
-        return $keysSearch;
-    }
-
-    /**
      * @param $application
      * @param $item
      * @param $key
