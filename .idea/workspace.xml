@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c00c69d8-136f-48b1-b9a4-1a7ff52dd4ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/task.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +128,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
@@ -146,17 +142,37 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1599997077055</updated>
-      <workItem from="1599997078886" duration="29000" />
+      <workItem from="1599997078886" duration="208000" />
     </task>
+    <task id="LOCAL-00001" summary="del main controller">
+      <created>1599997195865</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1599997195865</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="del main controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="del main controller" />
   </component>
   <component name="WindowStateProjectService">
     <state x="610" y="314" key="#Composer" timestamp="1599997106834">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="610" y="314" key="#Composer/0.0.1600.870@0.0.1600.870" timestamp="1599997106834" />
+    <state x="425" y="3" key="CommitChangelistDialog2" timestamp="1599997192455">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="425" y="3" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1599997192455" />
+    <state x="392" y="167" key="Vcs.Push.Dialog.v2" timestamp="1599997198694">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="392" y="167" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1599997198694" />
   </component>
 </project>
