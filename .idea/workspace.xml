@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c00c69d8-136f-48b1-b9a4-1a7ff52dd4ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -142,7 +141,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1599997077055</updated>
-      <workItem from="1599997078886" duration="208000" />
+      <workItem from="1599997078886" duration="256000" />
     </task>
     <task id="LOCAL-00001" summary="del main controller">
       <created>1599997195865</created>
@@ -151,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599997195865</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="del git .ide">
+      <created>1599997307658</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1599997307658</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,20 +165,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="del main controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="del main controller" />
+    <MESSAGE value="del git .ide" />
+    <option name="LAST_COMMIT_MESSAGE" value="del git .ide" />
   </component>
   <component name="WindowStateProjectService">
     <state x="610" y="314" key="#Composer" timestamp="1599997106834">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="610" y="314" key="#Composer/0.0.1600.870@0.0.1600.870" timestamp="1599997106834" />
-    <state x="425" y="3" key="CommitChangelistDialog2" timestamp="1599997192455">
+    <state x="425" y="3" key="CommitChangelistDialog2" timestamp="1599997306511">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="425" y="3" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1599997192455" />
-    <state x="392" y="167" key="Vcs.Push.Dialog.v2" timestamp="1599997198694">
+    <state x="425" y="3" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1599997306511" />
+    <state x="747" y="289" key="Vcs.Push.Dialog.v2" timestamp="1599997315562">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="392" y="167" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1599997198694" />
+    <state x="747" y="289" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1599997315562" />
   </component>
 </project>
